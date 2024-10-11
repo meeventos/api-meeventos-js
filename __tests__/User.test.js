@@ -1,4 +1,5 @@
 // __tests__/User.test.js
+require('dotenv').config();
 
 const UserInteraction = require("../src/UserInteraction");
 const Api = require("../src/Api");
@@ -8,8 +9,8 @@ jest.mock("../src/Api");
 
 describe("UserInteraction Class", () => {
   let user;
-  const baseURL = "https://teste.meeventos.com.br/empresateste/";
-  const apiKey = "ffy1a-foq67-loxdk-mx6gr-drq8n";
+  const baseURL = process.env.BASE_URL;
+  const apiKey = process.env.API_KEY;
 
   beforeEach(() => {
     // Resetar mocks antes de cada teste
