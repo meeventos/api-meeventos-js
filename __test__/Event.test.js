@@ -20,14 +20,14 @@ describe("Event Class", () => {
   });
   describe("list method", () => {
     it("deve chamar o método get com o endpoint correto sem ID", async () => {
-      const mockResponse = { id: 1, nome: "Orçamento 1" };
+      const mockResponse = { id: 1, nome: "Evento 1" };
       Api.prototype.get.mockResolvedValue(mockResponse);
       const response = await event.list();
       expect(Api.prototype.get).toHaveBeenCalledWith(`${baseURL}api/v1/events`);
       expect(response).toEqual(mockResponse);
     });
     it("deve chamar o método get com o endpoint correto com ID", async () => {
-      const mockResponse = { id: 1, nome: "Orçamento 1" };
+      const mockResponse = { id: 1, nome: "Evento 1" };
       Api.prototype.get.mockResolvedValue(mockResponse);
       const id = 1;
       const response = await event.list(id);
