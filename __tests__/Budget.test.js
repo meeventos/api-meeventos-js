@@ -9,8 +9,8 @@ jest.mock('../src/Api.js');
 
 describe('Budget Class', () => {
   let budget;
-  const baseURL = process.env.BASE_URL;
-  const apiKey = process.env.API_KEY;
+  const baseURL = process.env.ME_BASE_URL;
+  const apiKey = process.env.ME_API_KEY;
 
   beforeEach(() => {
     // Resetar mocks antes de cada teste
