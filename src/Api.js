@@ -44,7 +44,7 @@ class Api {
 
  async delete(endpoint) {
     try {
-      const response = await this.client.delete(endpoint);
+      const response = await this.client.DELETE(endpoint);
       return response.data;
     } catch (error) {
       throw new Error(`DELETE request failed: ${error.message}`);

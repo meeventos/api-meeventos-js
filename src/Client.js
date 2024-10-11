@@ -7,6 +7,11 @@ class Client extends Api {
     this.path = `${baseURL}api/v1/clients`
   }
 
+  async getAllClients() {
+    const endpoint = this.path; 
+    return await this.get(endpoint);
+  }
+
   async list(id = null) {
     let endpoint = id ? `/${id}` : "";
     endpoint = `${this.path}${endpoint}`;
