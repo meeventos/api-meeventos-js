@@ -1,25 +1,74 @@
+const axios = require('axios');
 
-const Client = require('./Client');
-
-class Meeventos {
+class MeEventos {
   constructor(baseURL, apiKey) {
-
-    this.baseURL =  baseURL;
-    this.apiKey =  apiKey;
-
-    this.client = new Client(this.baseURL, this.apiKey);
+    this.baseURL = baseURL.endsWith('/') ? baseURL : `${baseURL}/`;
+    this.apiKey = apiKey.trim();
+    this.events = this;
   }
 
-  setBaseUrl(baseUrl) {
-    this.baseUrl = baseUrl;
-    this.client = new Client(this.baseUrl, this.apiKey);
+  async getDataById(id) {
+    try {
+      const response = await axios.get(`${this.baseURL}api/v1/events/${id}`, {
+        headers: {
+          Authorization: this.apiKey,
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (!response.data || !response.data.id) {
+        throw new Error('ID não encontrado na resposta.');
+      }
+  
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+        throw new Error(error.response.data.message);
+      }
+      throw new Error(`GET request failed: ${error.message || 'Erro desconhecido'}`);
+    }
+  }
+  
+  
+  async list(id) {
+    try {
+      const endpoint = id ? `api/v1/events/${id}` : 'api/v1/events';
+      const response = await axios.get(`${this.baseURL}${endpoint}`, {
+        headers: {
+          Authorization: this.apiKey,
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(`GET request failed: ${error.message}`);
+    }
   }
 
-  // Setter para apiKey
-  setApiKey(apiKey) {
-    this.apiKey = apiKey;
-    this.client = new Client(this.baseUrl, this.apiKey);
+  async getData() {
+    try {
+      const headers = {
+        Authorization: `${this.apiKey}`,
+        'Content-Type': 'application/json',
+      };
+
+      const response = await axios.get(`${this.baseURL}api/v1/events`, {
+        headers,
+      });
+      
+      // Verifica se a resposta indica erro
+      if (response.data.status === 'error') {
+        throw new Error(response.data.message);
+      }
+      
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+        throw new Error(error.response.data.message);
+      }
+      throw new Error(`GET request failed: ${error.message || 'Erro desconhecido'}`);
+    }
   }
 }
 
-module.exports = Meeventos;
+module.exports = MeEventos;

@@ -14,9 +14,10 @@ class Api {
   }
 
   // Método auxiliar para requisições GET
-  async get(endpoint) {
+  async get(endpoint = "") {
     try {
-      const response = await this.client.get(endpoint);
+      const url = endpoint ? `${this.baseURL}${endpoint}` : this.baseURL;
+      const response = await this.client.get(url);
       return response.data;
     } catch (error) {
       throw new Error(`GET request failed: ${error.message}`);
