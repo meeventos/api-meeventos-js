@@ -7,12 +7,31 @@ class Client extends Api {
     this.path = `${baseURL}api/v1/clients`
   }
 
-  // Método que utiliza o GET para obter dados
-  async getData(id = null) {
-    let endpoint = id ? `/${id}` : '';
+  async list(id = null) {
+    let endpoint = id ? `/${id}` : "";
     endpoint = `${this.path}${endpoint}`;
 
     return await this.get(endpoint);
+  }
+
+  async create(data) { 
+    const endpoint = this.path; 
+    return await this.post(endpoint, data);
+  }
+
+  async update(id, data) {  
+    let endpoint = id ? `/${id}` : '';
+    endpoint = `${this.path}${endpoint}`;
+
+    return await this.put(endpoint, data); 
+}
+
+
+  async delete(id ) {
+    let endpoint = id ? `/${id}` : '';
+    endpoint = `${this.path}${endpoint}`;
+
+    return await this.delete(endpoint);
   }
 
 }

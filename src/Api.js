@@ -32,6 +32,24 @@ class Api {
       throw new Error(`POST request failed: ${error.message}`);
     }
   }
+
+  async put(endpoint, data) {
+    try {
+      const response = await this.client.put(endpoint, data);
+      return response.data;
+    } catch (error) {
+      throw new Error(`PUT request failed: ${error.message}`);
+    }
+  }
+
+ async delete(endpoint) {
+    try {
+      const response = await this.client.delete(endpoint);
+      return response.data;
+    } catch (error) {
+      throw new Error(`DELETE request failed: ${error.message}`);
+    }
+  }
 }
 
 module.exports = Api;
