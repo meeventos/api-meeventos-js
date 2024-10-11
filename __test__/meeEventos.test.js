@@ -3,8 +3,8 @@ const axios = require('axios');
 
 jest.mock('axios');
 
-const baseURL = 'https://teste.meeventos.com.br/empresateste/';
-const apiKey = 'ffy1a-foq67-loxdk-mx6gr-drq8n';
+const baseURL = '';
+const apiKey = '';
 let mee;
 
 beforeEach(() => {
