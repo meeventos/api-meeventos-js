@@ -32,12 +32,11 @@ class Client extends Api {
 }
 
 
-  async delete(id ) {
-    let endpoint = id ? `/${id}` : '';
-    endpoint = `${this.path}${endpoint}`;
-
-    return await this.delete(endpoint);
-  }
+async delete(id) {
+  let endpoint = id ? `/${id}` : '';
+  endpoint = `${this.path}${endpoint}`;
+  return await super.delete(endpoint);
+}
 
 }
 

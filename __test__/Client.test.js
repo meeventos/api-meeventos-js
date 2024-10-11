@@ -1,5 +1,3 @@
-require('dotenv').config(); // Carregar as variáveis de ambiente
-
 const Client = require("../src/Client");
 const Api = require("../src/Api");
 
@@ -8,8 +6,8 @@ jest.mock("../src/Api");
 
 describe("Client Class", () => {
   let client;
-  const baseURL = process.env.ME_BASE_URL; // Usar variável de ambiente para baseURL
-  const apiKey = process.env.ME_API_KEY; // Usar variável de ambiente para apiKey
+  const baseURL = "https://teste.meeventos.com.br/empresateste/";
+  const apiKey = "ffy1a-foq67-loxdk-mx6gr-drq8n";
 
   beforeEach(() => {
     // Resetar mocks antes de cada teste
@@ -52,7 +50,7 @@ describe("Client Class", () => {
     });
   });
 
-  describe("create method", () => {
+  describe("createCliente method", () => {
     it("deve criar um novo cliente", async () => {
       const mockData = { nome: "Novo Cliente" };
       const mockResponse = { result: "cliente criado" };
@@ -67,7 +65,7 @@ describe("Client Class", () => {
     });
   });
 
-  describe("update method", () => {
+  describe("updateCliente method", () => {
     it("deve atualizar um cliente existente", async () => {
       const clientId = "123";
       const mockData = { nome: "Cliente Atualizado" };
@@ -85,7 +83,7 @@ describe("Client Class", () => {
 
   describe("delete method", () => {
     it("deve deletar um cliente pelo ID", async () => {
-      const clientId = 521;
+      const clientId = "123";
       const mockResponse = { result: "cliente deletado" };
 
       // Simulando a resposta da chamada DELETE
