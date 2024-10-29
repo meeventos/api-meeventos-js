@@ -3,6 +3,8 @@ const Financial = require('./Financial');
 const Budget = require('./Budget');
 const UserInteraction = require('./UserInteraction');
 
+const Event = require('./Event');
+
 
 class Meeventos {
   constructor(baseURL, apiKey) {
@@ -15,6 +17,8 @@ class Meeventos {
     this.budget = new Budget(this.baseURL, this.apiKey);
     this.userInteraction = new UserInteraction(this.baseURL, this.apiKey);
 
+    this.event = new Event(this.baseURL, this.apiKey);
+
   }
 
   setBaseUrl(baseUrl) {
@@ -23,6 +27,8 @@ class Meeventos {
     this.financial = new Financial(this.baseURL, this.apiKey);
     this.budget = new Budget(this.baseURL, this.apiKey);
     this.userInteraction = new UserInteraction(this.baseURL, this.apiKey);
+    this.event = new Event(this.baseUrl, this.apiKey);
+
   }
 
   // Setter para apiKey
@@ -32,6 +38,8 @@ class Meeventos {
     this.financial = new Financial(this.baseURL, this.apiKey);
     this.budget = new Budget(this.baseURL, this.apiKey);
     this.userInteraction = new UserInteraction(this.baseURL, this.apiKey);
+
+    this.event = new Event(this.baseUrl, this.apiKey);
 
   }
 }
