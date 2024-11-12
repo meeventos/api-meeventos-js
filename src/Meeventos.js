@@ -20,28 +20,6 @@ class Meeventos {
     this.event = new Event(this.baseURL, this.apiKey);
 
   }
-
-  setBaseUrl(baseUrl) {
-    this.baseUrl = baseUrl;
-    this.client = new Client(this.baseUrl, this.apiKey);
-    this.financial = new Financial(this.baseURL, this.apiKey);
-    this.budget = new Budget(this.baseURL, this.apiKey);
-    this.userInteraction = new UserInteraction(this.baseURL, this.apiKey);
-    this.event = new Event(this.baseUrl, this.apiKey);
-
-  }
-
-  // Setter para apiKey
-  setApiKey(apiKey) {
-    this.apiKey = apiKey;
-    this.client = new Client(this.baseUrl, this.apiKey);
-    this.financial = new Financial(this.baseURL, this.apiKey);
-    this.budget = new Budget(this.baseURL, this.apiKey);
-    this.userInteraction = new UserInteraction(this.baseURL, this.apiKey);
-
-    this.event = new Event(this.baseUrl, this.apiKey);
-
-  }
 }
 
 module.exports = Meeventos;
