@@ -1,4 +1,3 @@
-
 ### Configuração do Ambiente e Integração da API MeEventos
 
 Este guia explica como configurar e integrar a API MeEventos no seu projeto Node.js. Siga os passos abaixo para configurar o `package.json`, instalar a biblioteca da API, e inicializar a instância com as credenciais de acesso.
