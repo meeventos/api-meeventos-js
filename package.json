@@ -2,7 +2,7 @@
   "name": "@meeventos/api",
   "version": "1.0.1",
   "description": "Client em JavaScript para integração com API da Meeventos.",
-  "main": "src/Api.js",
+  "main": "src/Meeventos.js",
   "scripts": {
     "test": "jest"
   },
