@@ -8,8 +8,10 @@ class Budget extends Api {
   }
 
   // Lista todos os orçamentos ou exibe um orçamento de um determinado ID
-  async list(id = null) {
-    let endpoint = id ? `/${id}` : "";
+  async list(id = null, json = {}) {
+    let params = new URLSearchParams(json).toString();
+    let endpoint = id ? `/${id}` : json ? `?${params}` : "";
+
     endpoint = `${this.path}${endpoint}`;
 
     return await this.get(endpoint);
@@ -21,6 +23,13 @@ class Budget extends Api {
       throw new Error("Você deve enviar os dados do orçamento");
     }
     return await this.post(this.path, data);
+  }
+
+  // Cria um follow-up
+  async followUp(id, data) {
+    let endpoint = `${this.path}/${id}/followups`;
+
+    return await this.put(endpoint, data);
   }
 }
 
